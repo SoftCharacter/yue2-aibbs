@@ -4,7 +4,7 @@
 
 输入一段风格描述和歌词，即可生成带人声与伴奏的完整歌曲；也可以上传已有的歌曲，让 AI 重新编曲翻唱。
 
-> 版本：1.0.0 · 平台：Windows · 运行方式：便携免安装
+> 版本：1.0.0 · 平台：Windows · Python 3.12
 
 ---
 
@@ -54,7 +54,8 @@
 
 ```
 yue2_aibbs/
-├── 启动器.bat          # 启动入口（双击运行）
+├── start.bat           # 启动入口（双击运行）
+├── requirements.txt    # Python 依赖清单
 ├── app/                # 应用源代码
 │   ├── main.py         # 入口
 │   ├── mainwindow.py   # 主窗口与导航
@@ -63,23 +64,70 @@ yue2_aibbs/
 │   ├── theme.py        # 主题与样式
 │   ├── pages/          # 各功能页面
 │   └── widgets/        # 通用与专用控件
-├── env/                # 便携 Python 环境与 ffmpeg
+├── venv/               # 虚拟环境（可选，按下方「环境安装」创建）
 ├── models/             # 模型权重
 └── outputs/            # 生成结果输出
 ```
 
 ---
 
-## 快速开始
+## 环境安装（全新电脑）
 
-1. 确保 `models/` 目录下已放置所需的模型权重，`env/` 为完整的便携运行环境。
-2. 双击 `启动器.bat` 启动应用。
-3. 在左侧导航选择功能模块，按页面引导操作。
+以下步骤面向一台没有任何环境的全新 Windows 电脑，按顺序执行即可。
 
-命令行启动：
+### 1. 安装 Python 3.12
+
+从 [python.org](https://www.python.org/downloads/) 下载并安装 Python 3.12，安装时勾选 **Add Python to PATH**。
+
+### 2. 安装 NVIDIA 驱动与 CUDA
+
+安装支持 CUDA 的 NVIDIA 显卡驱动。PyTorch 2.10.0 支持 **CUDA 12.6 / 12.8 / 13.0** 三档。
+
+### 3. 创建虚拟环境（推荐）
 
 ```bat
-env\python.exe -m app.main
+cd yue2_aibbs
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 4. 安装 PyTorch（CUDA 版）
+
+按你的 CUDA 版本三选一执行：
+
+```bat
+:: CUDA 13.0（推荐）
+pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130
+
+:: CUDA 12.8
+pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
+
+:: CUDA 12.6
+pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu126
+```
+
+> 必须先单独安装 CUDA 版 PyTorch，直接 `pip install torch` 会装成 CPU 版，无法使用 GPU。
+
+### 5. 安装其余依赖
+
+```bat
+pip install -r requirements.txt
+```
+
+### 6. 安装 ffmpeg
+
+下载 [ffmpeg](https://ffmpeg.org/download.html)，将其 `bin` 目录加入系统 PATH，或放到项目根目录的 `ffmpeg\bin\` 下（`start.bat` 会自动查找）。
+
+### 7. 下载模型
+
+按上文「模型层」表格下载所需模型，放入 `models/` 目录。另需将 YuE2 推理包（`yue2_infer-*.whl`）放入 `models/YuE2-3B/` 下，或执行 `pip install yue2-infer`。
+
+### 8. 启动
+
+双击 `start.bat`，或在命令行执行：
+
+```bat
+python -m app.main
 ```
 
 ---
@@ -87,7 +135,9 @@ env\python.exe -m app.main
 ## 系统要求
 
 - Windows 10/11（64 位）
-- NVIDIA GPU（CUDA），用于 PyTorch 推理
+- Python 3.12
+- NVIDIA GPU（CUDA 12.6 / 12.8 / 13.0），用于 PyTorch 推理
+- ffmpeg（音频解码）
 - 显存建议充裕：歌曲时长越长、质量越高，所需显存越大；可在「设置」中调整显存预算与注意力后端以适配不同显卡
 
 ---
