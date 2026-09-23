@@ -73,7 +73,7 @@
     "preset": "DeepSeek",
     "protocol": "openai",
     "base_url": "https://api.deepseek.com/v1",
-    "api_key": "sk-4eed83d3ce0549cea4bc6de979d59308",
+    "api_key": "",
     "model": "deepseek-v4-pro",
     "temperature": 0.8,
     "prompts": {
