@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "mcp__sequential-thinking__sequentialthinking",
-      "Bash(sed -n '548,556p' app/settings.py.1shot.das)",
-      "Bash(sed -n '275,290p' app/theme.py.1shot.das)"
-    ]
-  }
-}
