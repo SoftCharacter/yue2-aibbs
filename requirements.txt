@@ -1,0 +1,29 @@
+# ============================================================
+#  YuE2 Studio 依赖清单（Python 3.12）
+#
+#  安装顺序（详见 README.md「环境安装」）：
+#   1) 先按你的 CUDA 版本单独安装 PyTorch（勿直接 pip 装成 CPU 版）
+#   2) 再执行  pip install -r requirements.txt
+# ============================================================
+
+# ---------- PyTorch（需按 CUDA 版本单独安装，勿在此直接安装）----------
+#  CUDA 13.0：pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130
+#  CUDA 12.8：pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
+#  CUDA 12.6：pip install torch==2.10.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu126
+
+# ---------- YuE2 推理核心依赖（版本与官方 pyproject 锁定一致）----------
+transformers==4.57.6
+huggingface-hub==0.36.2
+safetensors==0.7.0
+tiktoken==0.12.0
+numpy==2.2.6
+soundfile==0.13.1
+accelerate==1.13.0
+
+# ---------- 桌面界面 ----------
+PySide6>=6.7
+
+# ---------- AI 写词 / 改词（LLM 客户端）----------
+httpx>=0.27
+requests>=2.31
+# anthropic>=0.40   # 仅当使用 Anthropic Claude 时取消注释
