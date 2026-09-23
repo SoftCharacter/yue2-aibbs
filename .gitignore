@@ -1,0 +1,18 @@
+# 模型权重目录（体积大，不入库）
+models/MERT-v2-30s/
+models/MERT-v2-FullSong/
+models/Qwen3-ASR-1.7B/
+models/Qwen3-ForcedAligner-0.6B/
+models/SheetSage2/
+models/YuE2-3B/
+models/YuE2-Vae/
+# 生成结果目录（不入库）
+outputs/lyrics/
+outputs/mert/
+outputs/songs/
+outputs/transcribe/
+# Python 字节码缓存
+__pycache__/
+*.py[cod]
+# Python 环境
+env/

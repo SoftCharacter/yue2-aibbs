@@ -1,0 +1,89 @@
+{
+  "theme": "dark",
+  "device": "auto",
+  "memory_budget_gib": 0,
+  "backend": "torch",
+  "attention": "auto",
+  "vae": "YuE2-Vae",
+  "verify_hashes": false,
+  "exclusive_vram": true,
+  "output_dir": "",
+  "mp3_bitrate": "320k",
+  "drafts": {
+    "create": {
+      "cot": "full",
+      "ode_steps": 32,
+      "seed": 42,
+      "seed_auto": false,
+      "count": 1,
+      "cfg_scale": null,
+      "title": "",
+      "decode_options": {
+        "mode": "auto",
+        "core_frames": 1024,
+        "context_frames": 16
+      },
+      "style": "Mandarin, warm piano, acoustic pop, female vocal",
+      "lyrics": "[Verse]\n晚风轻轻吹过窗前\n你留下的笑还在昨天\n街灯把影子拉得很远\n我在原地数着时间\n\n[Chorus]\n让这首歌陪你走远\n把所有想念唱成明天\n如果风能带去我的心愿\n就让它落在你身边\n\n[Verse]\n旧照片里的蓝天\n还是那年夏天的脸\n我们说好的永远\n藏在每一句歌词里面\n\n[Chorus]\n让这首歌陪你走远\n把所有想念唱成明天\n如果风能带去我的心愿\n就让它落在你身边\n\n[Outro]\n就让它落在你身边",
+      "mode": "create",
+      "abc_sampling": null,
+      "semantic_sampling": null
+    },
+    "batch": {
+      "source": "cover",
+      "create_input": "themes",
+      "lyrics_action": "polish",
+      "melody": "melody",
+      "cot": "full",
+      "asr_language": null,
+      "instruction": "",
+      "length": "3min",
+      "language_mode": "auto",
+      "language": "中文",
+      "structure": "lines",
+      "structure_retries": 1,
+      "style_mode": "fixed",
+      "style": "",
+      "review": false,
+      "review_wait": "block",
+      "order": "stage",
+      "on_error": "skip",
+      "generation": {
+        "count": 1,
+        "seed": 831001,
+        "seed_auto": false,
+        "ode_steps": 32,
+        "cfg_scale": null,
+        "decode_options": {
+          "mode": "auto",
+          "core_frames": 1024,
+          "context_frames": 16
+        },
+        "abc_sampling": null,
+        "semantic_sampling": null
+      },
+      "audio_files": [],
+      "lyric_files": [],
+      "themes": "",
+      "theme": "",
+      "theme_count": 5
+    }
+  },
+  "llm": {
+    "preset": "DeepSeek",
+    "protocol": "openai",
+    "base_url": "https://api.deepseek.com/v1",
+    "api_key": "sk-4eed83d3ce0549cea4bc6de979d59308",
+    "model": "deepseek-v4-pro",
+    "temperature": 0.8,
+    "prompts": {
+      "write": "",
+      "rewrite": "",
+      "style": ""
+    }
+  },
+  "llm_recent": [
+    "现在的歌词是一首歌的前半段歌词，你按照相似的风格续写后半段的歌词",
+    "当前歌词只是前半段，你按照这个风格和韵律扩写后半段"
+  ]
+}
