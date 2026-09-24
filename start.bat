@@ -16,6 +16,9 @@ if errorlevel 1 (
     if exist "%~dp0ffmpeg\bin\ffmpeg.exe" set "PATH=%~dp0ffmpeg\bin;%PATH%"
 )
 
+rem 切换到 UTF-8 控制台，使应用日志正常显示中文
+chcp 65001 >nul
+
 "%PYEXE%" -m app.main
 if errorlevel 1 (
     echo.
